@@ -1,0 +1,7 @@
+app:
+  mode: debug
+db:
+  type: sqlite3
+  dsn: target/db/mine.db
+web:
+  port: :5219

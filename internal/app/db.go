@@ -10,14 +10,22 @@ import (
 )
 
 func NewDB(conf Config) (*gorm.DB, error) {
+	var (
+		err error
+		db  *gorm.DB
+	)
 	switch conf.DB.Type {
 	case "sqlite3":
 		slog.Info("1")
-		return loadSqlite(conf.DB.DSN)
+		db, err = loadSqlite(conf.DB.DSN)
 	default:
 		slog.Info("暂不支持的数据库：" + conf.DB.Type)
 		return nil, fmt.Errorf("暂不支持的数据库：" + conf.DB.Type)
 	}
+	if err = autoMigrate(db); nil != err {
+		return nil, err
+	}
+	return db, err
 }
 
 func loadSqlite(dsn string) (*gorm.DB, error) {
@@ -36,4 +44,8 @@ func loadSqlite(dsn string) (*gorm.DB, error) {
 	}
 	// 加载数据库
 	return gorm.Open(sqlite.Open(dsn), &gorm.Config{})
+}
+
+func autoMigrate(db *gorm.DB) error {
+	return nil
 }

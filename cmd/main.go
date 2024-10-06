@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log/slog"
 	a "mine/internal/app"
+	"mine/internal/web"
 )
 
 func main() {
@@ -14,5 +15,9 @@ func main() {
 		slog.Error("应用启动失败：" + err.Error())
 	} else {
 		slog.Info("hello world:" + app.Conf.APP.Mode)
+		web.InitRouter(app)
+		if err := app.LinkStart(); nil != err {
+			slog.Error("应用运行失败：" + err.Error())
+		}
 	}
 }

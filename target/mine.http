@@ -1,0 +1,4 @@
+@public = localhost:5219/v1/public
+
+### hello
+GET {{public}}/hello HTTP/1.1

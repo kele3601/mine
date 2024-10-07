@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"mine/common/utils"
 	"mine/internal/db/model"
@@ -16,6 +17,22 @@ type UserRepo interface {
 
 type UserServiceImpl struct {
 	ur UserRepo
+}
+
+func (us *UserServiceImpl) CheckUserByClaims(ctx *gin.Context) (*utils.JwtUserClaims, error) {
+	if claims, exists := ctx.Get("claims"); !exists {
+		return nil, fmt.Errorf("请先登录")
+	} else {
+		if c, ok := claims.(*utils.JwtUserClaims); !ok {
+			return nil, fmt.Errorf("非法token")
+		} else {
+			if us.ur.CheckExistByField("id", c.UserID) {
+				return c, nil
+			} else {
+				return nil, fmt.Errorf("不存在的用户")
+			}
+		}
+	}
 }
 
 func (us *UserServiceImpl) Login(user *model.User) (string, error) {

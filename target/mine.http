@@ -1,5 +1,13 @@
 @public = localhost:5219/v1/public
 
+### login
+POST {{public}}/login HTTP/1.1
+
+{
+"name":"test",
+"pass":"11111"
+}
+
 ### register
 POST {{public}}/register HTTP/1.1
 

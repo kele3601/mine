@@ -1,3 +1,2 @@
 # app
 target/*.db
-*_test.go

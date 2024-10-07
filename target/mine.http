@@ -1,4 +1,14 @@
 @public = localhost:5219/v1/public
 
+### register
+POST {{public}}/register HTTP/1.1
+
+{
+"name":"test",
+"pass":"11111",
+"email":"emailemailemailemailemailemailemailemailemailemailemailemailemailemail",
+"phone":"phonephonephonephonephonephonephonephonephonephonephonephonephonephonephonephonephonephone"
+}
+
 ### hello
 GET {{public}}/hello HTTP/1.1

@@ -5,6 +5,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"log/slog"
+	"mine/internal/db/model"
 	"os"
 	"path/filepath"
 )
@@ -47,5 +48,8 @@ func loadSqlite(dsn string) (*gorm.DB, error) {
 }
 
 func autoMigrate(db *gorm.DB) error {
+	if err := db.AutoMigrate(&model.User{}); nil != err {
+		return err
+	}
 	return nil
 }

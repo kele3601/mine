@@ -7,3 +7,7 @@ type BaseModel struct {
 	ID    string `json:"id" gorm:"primary_key;unique;size:10"`
 	IsDel bool   `json:"is_del" gorm:"default:false"`
 }
+
+type BM interface {
+	SetID()
+}

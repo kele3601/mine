@@ -8,6 +8,17 @@ import (
 
 type BillService interface {
 	Account(bill *model.Bill) error
+	List() ([]*model.Bill, error)
+}
+
+func (h *Handler) BillList(router *gin.RouterGroup) {
+	router.POST("/bill/list", func(ctx *gin.Context) {
+		if bills, err := h.bs.List(); err != nil {
+			r.Return(ctx, r.Fail().SetMes(err.Error()))
+		} else {
+			r.Return(ctx, r.OK().SetData(bills))
+		}
+	})
 }
 
 func (h *Handler) Account(router *gin.RouterGroup) {

@@ -14,7 +14,7 @@ type UserService interface {
 	List() ([]*model.User, error)
 }
 
-func (h *Handler) List(router *gin.RouterGroup) {
+func (h *Handler) UserList(router *gin.RouterGroup) {
 	router.POST("/user/list", func(ctx *gin.Context) {
 		if users, err := h.us.List(); err != nil {
 			r.Return(ctx, r.Fail().SetMes(err.Error()))

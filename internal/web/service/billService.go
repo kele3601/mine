@@ -8,10 +8,15 @@ import (
 
 type BillRepo interface {
 	Create(bill *model.Bill) error
+	List() ([]*model.Bill, error)
 }
 
 type BillServiceImpl struct {
 	br BillRepo
+}
+
+func (bs *BillServiceImpl) List() ([]*model.Bill, error) {
+	return bs.br.List()
 }
 
 func (bs *BillServiceImpl) Account(bill *model.Bill) error {

@@ -2,7 +2,12 @@
 @public = {{basic}}/public
 @protected = {{basic}}/protected
 
-### getUserList
+### BillList
+POST {{protected}}/bill/list HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiLUdGTW83MUVJZXVGanJpSDVqZTV0In0.4Zj922TS5TH5UM0Z-yPPlGyIsMRVHp3vL7Tj2mBCWJI
+
+
+### UserList
 POST {{protected}}/user/list HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiLUdGTW83MUVJZXVGanJpSDVqZTV0In0.4Zj922TS5TH5UM0Z-yPPlGyIsMRVHp3vL7Tj2mBCWJI
 

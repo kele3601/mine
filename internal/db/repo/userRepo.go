@@ -9,6 +9,15 @@ type UserRepository struct {
 	db *gorm.DB
 }
 
+func (ur *UserRepository) List() ([]*model.User, error) {
+	var users []*model.User
+	if err := ur.db.Find(&users).Error; err != nil {
+		return nil, err
+	} else {
+		return users, nil
+	}
+}
+
 func (ur *UserRepository) FindByName(name string) (*model.User, error) {
 	return ur.FindByField("name", name)
 }

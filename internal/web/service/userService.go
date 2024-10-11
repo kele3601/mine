@@ -13,10 +13,15 @@ type UserRepo interface {
 	Create(user *model.User) error
 	CheckExistByField(field string, value string) bool
 	FindByName(name string) (*model.User, error)
+	List() ([]*model.User, error)
 }
 
 type UserServiceImpl struct {
 	ur UserRepo
+}
+
+func (us *UserServiceImpl) List() ([]*model.User, error) {
+	return us.ur.List()
 }
 
 func (us *UserServiceImpl) CheckUserByClaims(ctx *gin.Context) (*utils.JwtUserClaims, error) {

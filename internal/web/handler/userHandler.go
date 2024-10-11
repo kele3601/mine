@@ -11,6 +11,17 @@ type UserService interface {
 	Register(user *model.User) error
 	Login(user *model.User) (string, error)
 	CheckUserByClaims(ctx *gin.Context) (*utils.JwtUserClaims, error)
+	List() ([]*model.User, error)
+}
+
+func (h *Handler) List(router *gin.RouterGroup) {
+	router.POST("/getUserList", func(ctx *gin.Context) {
+		if users, err := h.us.List(); err != nil {
+			r.Return(ctx, r.Fail().SetMes(err.Error()))
+		} else {
+			r.Return(ctx, r.OK().SetData(users))
+		}
+	})
 }
 
 func (h *Handler) Login(router *gin.RouterGroup) {

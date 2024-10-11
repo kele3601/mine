@@ -22,6 +22,7 @@ func InitRouter(app *app.App) {
 		handler.Register(public)
 		handler.Login(public)
 		handler.Account(protected)
+		handler.List(protected)
 	}
 }
 

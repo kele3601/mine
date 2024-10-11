@@ -2,6 +2,11 @@
 @public = {{basic}}/public
 @protected = {{basic}}/protected
 
+### getUserList
+POST {{protected}}//getUserList HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiLUdGTW83MUVJZXVGanJpSDVqZTV0In0.4Zj922TS5TH5UM0Z-yPPlGyIsMRVHp3vL7Tj2mBCWJI
+
+
 ### account
 POST {{protected}}/account HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiLUdGTW83MUVJZXVGanJpSDVqZTV0In0.4Zj922TS5TH5UM0Z-yPPlGyIsMRVHp3vL7Tj2mBCWJI

@@ -15,7 +15,7 @@ type UserService interface {
 }
 
 func (h *Handler) List(router *gin.RouterGroup) {
-	router.POST("/getUserList", func(ctx *gin.Context) {
+	router.POST("/user/list", func(ctx *gin.Context) {
 		if users, err := h.us.List(); err != nil {
 			r.Return(ctx, r.Fail().SetMes(err.Error()))
 		} else {
@@ -25,7 +25,7 @@ func (h *Handler) List(router *gin.RouterGroup) {
 }
 
 func (h *Handler) Login(router *gin.RouterGroup) {
-	router.POST("/login", func(ctx *gin.Context) {
+	router.POST("/user/login", func(ctx *gin.Context) {
 		var user model.User
 		if err := ctx.ShouldBindJSON(&user); err != nil {
 			r.Return(ctx, r.Fail().SetMes("参数错误"))
@@ -39,7 +39,7 @@ func (h *Handler) Login(router *gin.RouterGroup) {
 }
 
 func (h *Handler) Register(router *gin.RouterGroup) {
-	router.POST("/register", func(ctx *gin.Context) {
+	router.POST("/user/register", func(ctx *gin.Context) {
 		var user model.User
 		if err := ctx.ShouldBindJSON(&user); err != nil {
 			r.Return(ctx, r.Fail().SetMes("参数错误"))

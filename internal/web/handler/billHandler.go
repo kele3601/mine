@@ -11,7 +11,7 @@ type BillService interface {
 }
 
 func (h *Handler) Account(router *gin.RouterGroup) {
-	router.POST("/account", func(ctx *gin.Context) {
+	router.POST("/bill/account", func(ctx *gin.Context) {
 		claims, err := h.us.CheckUserByClaims(ctx)
 		if nil != err {
 			r.Return(ctx, r.Fail().SetMes(err.Error()))
